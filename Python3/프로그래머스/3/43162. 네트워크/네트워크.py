@@ -1,7 +1,7 @@
 def solution(n, computers):
     answer = 0
     
-    # 입력 받은 시작 index부터 DFS로 연결되어 있는 모든 노드 index를 반환하는 함수
+    # 입력 받은 index로부터 연결되어 있는 모든 노드들의 index를 DFS로 반환하는 함수
     def dfs(start_idx):
         
         stack = [start_idx]
@@ -26,15 +26,17 @@ def solution(n, computers):
         
         return list(visited)
     
-    # 0부터 n-1까지 전체 index
+    # 0부터 n-1까지 전체 node
     whole_idx = list(range(n))
     
-    # 전체 index에서 하나라도 남아있다면
+    # 전체 node 순회
     while(whole_idx):
-        # 전체 index 중 첫 번째 index부터 DFS 실행
-        answer += 1
+        # 남아있는 node 중 첫 번째 DFS 실행
         visited_idx = dfs(whole_idx[0])
-        # 입력한 원소와 연결되어있는 모든 노드 삭제
+        # 현재 node 연결되어있는 모든 노드 삭제
         whole_idx = [idx for idx in whole_idx if idx not in visited_idx]
+        
+        # 네트워크 개수 +1
+        answer += 1
     
     return answer
