@@ -22,13 +22,15 @@ def solution(N, road, K):
     heapq.heappush(queue, [distances[1], 1])
 
     while queue:
-        print(queue)
         
+        # 현재 위치
         cur_dist, cur_dest = heapq.heappop(queue)
         
+        # 계산할 값어치가 있는지
         if distances[cur_dest] < cur_dist:
             continue
-    
+        
+        # 주변 노드 계산
         for next_dest, weight in graph.get(cur_dest, {}).items():
             next_dist = cur_dist + weight
             
