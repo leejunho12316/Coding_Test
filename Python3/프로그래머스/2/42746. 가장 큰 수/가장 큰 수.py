@@ -1,5 +1,5 @@
 def func(string):
-    string = (string*4)[:4]
+    string = (string*3)[:4]
     return string
 
 def solution(numbers):
